@@ -279,7 +279,7 @@ img{
   margin-bottom: var(--mb-2);
 }
 .about__img{
-  margin-left: -80px;
+  border-radius: .5rem;
 }
 .about__img img{
   width: 200px;
@@ -340,7 +340,6 @@ img{
 }
 .skills__img{
   border-radius: .5rem;
-  margin-left: 80px;
 }
 
 /* ===== WORK =====*/
