@@ -40,7 +40,7 @@ export default class Main extends Component{
                 <p classNameName="about__text" hidden={this.state.status}>{this.state.email}<br/>{this.state.phone}</p>
 
                 <div className="home__social">
-                    <a href="https://github.com/Panupat-Chanate" className="home__social-icon"><i className='bx bxl-github' ></i></a>
+                    <a href="https://github.com/Panupat-Chanate" className="home__social-icon"><i className='bx bxl-github skills__icon' ></i></a>
                 </div>
 
                 <div className="home__img">    
@@ -199,7 +199,7 @@ export default class Main extends Component{
                         </div>
                         <div className="skills__data">
                             <div className="skills__names">
-                                <i className='bx bxl-c-plus-plus skills__icon'></i>
+                                <i class="fas fa-spinner fa-pulse skills__icon"></i>
                                 <span className="skills__name">C++</span>
                             </div>
                             <div className="skills__bar skills__70">
@@ -211,7 +211,7 @@ export default class Main extends Component{
                         </div>
                         <div className="skills__data">
                             <div className="skills__names">
-                            <i className='bx bxl-c-plus-plus skills__icon'></i>
+                                <i class="fas fa-spinner fa-pulse skills__icon"></i>
                                 <span className="skills__name">C#</span>
                             </div>
                             <div className="skills__bar skills__80">
