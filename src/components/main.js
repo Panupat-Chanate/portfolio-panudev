@@ -36,8 +36,8 @@ export default class Main extends Component{
                     <span type="button" className="button" onClick={this.handleContact}>Contact</span>
                 </div>
 
-                {/* <p classNameName="about__text">{this.state.email}</p> */}
-                <p classNameName="about__text" hidden={this.state.status}>{this.state.email}<br/>{this.state.phone}</p>
+                {/* <p className="about__text">{this.state.email}</p> */}
+                <p className="about__text" hidden={this.state.status}>{this.state.email}<br/>{this.state.phone}</p>
 
                 <div className="home__social">
                     <a href="https://github.com/Panupat-Chanate" className="home__social-icon"><i className='bx bxl-github skills__icon' ></i></a>
@@ -53,7 +53,7 @@ export default class Main extends Component{
                 <h2 className="section-title">About</h2>
 
                 <div className="about__container bd-grid">
-                    <img src={About} alt="" classNameName="about__img"/>
+                    <img src={About} alt="" className="about__img"/>
                     
                     <div>
                         <h2>Personal Details</h2>
@@ -62,8 +62,16 @@ export default class Main extends Component{
                         <br></br>
                         <h2>Education</h2>
                         <p className="about__text">Bachelor Degree of Computer Engineering</p>
-                        <p className="about__text">Pibulsongkram Rajabhat UniversityGPA : 3.45</p>
+                        <p className="about__text">Pibulsongkram Rajabhat University GPA : 3.45</p>
+                        <p>Download : 
+                            <a href={'/gpa.pdf'} target="_blank"> <i className='bx bxs-file-pdf prefix'></i> Transcript</a>
+                            <a href={'/PANUPAT-resume.pdf'} target="_blank"> <i className='bx bxs-file-pdf prefix'></i> Resume</a>
+                        </p>
                         <br></br>
+                        {/* <h2>Education</h2>
+                        <p className="about__text">Bachelor Degree of Computer Engineering</p>
+                        <p className="about__text">Pibulsongkram Rajabhat UniversityGPA : 3.45</p>
+                        <br></br> */}
                         <h2>Cooperative Education</h2>
                         <p className="about__text">O S D Co., LTD.(Optimum Solution Defined)</p>
                         <br></br>
@@ -240,6 +248,21 @@ export default class Main extends Component{
                 </div>
             </section>
 
+            {/* myapp */}
+            <section className="about section " id="myapp">
+                <h2 className="section-title">MyApp</h2>
+                <div className="about__container bd-grid">
+                    <iframe className="myapp" src="https://sununtdev.com/cpepsru/" title="Iframe Example"></iframe>
+                    <h2>เว็บสาขาวิศวกรรมคอมพิวเตอร์ มรพส.</h2>
+                    <div>           
+                        <iframe className="myapp" src="https://alumni-cpe-panudev.herokuapp.com/" title="Iframe Example"></iframe>
+                    </div>
+                    
+                    <h2>เว็บฟอร์มกรอกข้อมูลศิษย์เก่า (Alumni-CPE)</h2>
+                    </div>
+                    
+            </section>
+
             <section className="work section" id="work">
                 <h2 className="section-title">Work</h2>
                 <div className="work__container bd-grid">
@@ -280,6 +303,5 @@ export default class Main extends Component{
         </main>
         </div>
       );
-    }
-      
+    } 
   }
