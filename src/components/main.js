@@ -253,12 +253,14 @@ export default class Main extends Component{
                 <h2 className="section-title">MyApp</h2>
                 <div className="about__container bd-grid">
                     <iframe className="myapp" src="https://sununtdev.com/cpepsru/" title="Iframe Example"></iframe>
-                    <h2>เว็บสาขาวิศวกรรมคอมพิวเตอร์ มรพส.</h2>
+                    
+                    <a href="https://sununtdev.com/cpepsru/"><h2>เว็บสาขาวิศวกรรมคอมพิวเตอร์ มรพส.(*Click)</h2></a>
                     <div>           
                         <iframe className="myapp" src="https://alumni-cpe-panudev.herokuapp.com/" title="Iframe Example"></iframe>
                     </div>
                     
-                    <h2>เว็บฟอร์มกรอกข้อมูลศิษย์เก่า (Alumni-CPE)</h2>
+                    
+                    <a href="https://alumni-cpe-panudev.herokuapp.com/"><h2>Alumni-CPE (*Click)</h2></a>
                     </div>
                     
             </section>
