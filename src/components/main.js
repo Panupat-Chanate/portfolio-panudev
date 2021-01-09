@@ -9,20 +9,48 @@ import Web from '../image/web.jpg';
 import Server from '../image/server.svg';
 import Reactsvg from '../image/react.svg';
 import About from '../image/about.svg';
+import axios from 'axios';
+
 export default class Main extends Component{
     constructor(){
         super();
         this.state = {
             email: 'Email : panupat.chanate@gmail.com',
             phone: 'Tel : 098-793-3914',
-            status: true
+            status: true,
+            txtname: '',
+            txtemail: '',
+            txtmessage: ''
         }
     }
 
-    handleContact=(e)=>{
+    handleContact = (e) => {
         this.setState({
             status: false
         })
+    }
+    handleChange = (e) => {
+        this.setState ({
+            [e.target.id]: e.target.value
+        })
+    }
+    sendMail = (e) => {
+        var value = {
+            name: this.state.txtname,
+            email: this.state.txtemail,
+            message: this.state.txtmessage
+        }
+        axios.post("/send", value)
+        .then((response) => {
+            alert(response.data)
+            this.setState({
+                txtname: '',
+                txtemail: '',
+                txtmessage: ''
+            })
+        }).catch((error) => {
+            alert('เกิดข้อผิดพลาดบางอย่าง')
+        });
     }
     render () {
       return (
@@ -241,6 +269,18 @@ export default class Main extends Component{
                                 <span className="skills__percentage">80%</span>
                             </div>
                         </div>
+                        <div className="skills__data">
+                            <div className="skills__names">
+                                <i className="fab fa-java skills__icon"></i>
+                                <span className="skills__name">Java</span>
+                            </div>
+                            <div className="skills__bar skills__60">
+                                
+                            </div>
+                            <div>
+                                <span className="skills__percentage">60%</span>
+                            </div>
+                        </div>
                     </div>
                     <div>              
                         <img src={Server} alt="" className="skills__img"/>
@@ -290,18 +330,18 @@ export default class Main extends Component{
             </section>
 
             {/* <!--===== CONTACT =====--> */}
-            {/* <section className="contact section" id="contact">
+            <section className="contact section" id="contact">
                 <h2 className="section-title">Contact</h2>
 
                 <div className="contact__container bd-grid">
                     <form action="" className="contact__form">
-                        <input type="text" placeholder="Name" className="contact__input"/>
-                        <input type="mail" placeholder="Email" className="contact__input"/>
-                        <textarea name="" id="" cols="0" rows="10" className="contact__input"></textarea>
-                        <input type="button" value="Send" className="contact__button button"/>
+                        <input type="text" placeholder="Name" className="contact__input" id="txtname" value={this.state.txtname} onChange={this.handleChange}/>
+                        <input type="mail" placeholder="Email" className="contact__input" id="txtemail" value={this.state.txtemail} onChange={this.handleChange}/>
+                        <textarea name="" id="" cols="0" rows="10" className="contact__input" id="txtmessage" value={this.state.txtmessage} onChange={this.handleChange}></textarea>
+                        <input type="button" value="Send" className="contact__button button" onClick={this.sendMail}/>
                     </form>
                 </div>
-            </section> */}
+            </section>
         </main>
         </div>
       );
