@@ -20,7 +20,8 @@ export default class Main extends Component{
             status: true,
             txtname: '',
             txtemail: '',
-            txtmessage: ''
+            txtmessage: '',
+            errors: ''
         }
     }
 
@@ -40,17 +41,45 @@ export default class Main extends Component{
             email: this.state.txtemail,
             message: this.state.txtmessage
         }
-        axios.post("/send", value)
-        .then((response) => {
-            alert(response.data)
-            this.setState({
-                txtname: '',
-                txtemail: '',
-                txtmessage: ''
-            })
-        }).catch((error) => {
-            alert('เกิดข้อผิดพลาดบางอย่าง')
+        if(this.validate()){
+            axios.post("/send", value)
+            .then((response) => {
+                alert(response.data)
+                this.setState({
+                    txtname: '',
+                    txtemail: '',
+                    txtmessage: ''
+                })
+            }).catch((error) => {
+                alert('เกิดข้อผิดพลาดบางอย่าง')
+            });
+        }
+    }
+
+    validate(){
+        let errors = {};
+        let isValid = true;
+    
+        if (!this.state.txtname) {
+          isValid = false;
+          errors["txtname"] = "ป้อนชื่อ";
+        }
+    
+        if (!this.state.txtemail) {
+          isValid = false;
+          errors["txtemail"] = "ป้อนอีเมล";
+        }
+
+        if (!this.state.txtmessage) {
+            isValid = false;
+            errors["txtmessage"] = "ป้อนข้อความ";
+        }
+    
+        this.setState({
+          errors: errors
         });
+    
+        return isValid;
     }
     render () {
       return (
@@ -335,9 +364,9 @@ export default class Main extends Component{
 
                 <div className="contact__container bd-grid">
                     <form action="" className="contact__form">
-                        <input type="text" placeholder="Name" className="contact__input" id="txtname" value={this.state.txtname} onChange={this.handleChange}/>
-                        <input type="mail" placeholder="Email" className="contact__input" id="txtemail" value={this.state.txtemail} onChange={this.handleChange}/>
-                        <textarea name="" id="" cols="0" rows="10" className="contact__input" id="txtmessage" value={this.state.txtmessage} onChange={this.handleChange}></textarea>
+                        <input type="text" placeholder={this.state.errors.txtname?this.state.errors.txtname:"Name"} className={this.state.errors.txtname?"error":"contact__input"} name="txtname" id="txtname" value={this.state.txtname} onChange={this.handleChange}/>
+                        <input type="mail" placeholder={this.state.errors.txtemail?this.state.errors.txtemail:"Email"} className={this.state.errors.txtemail?"error":"contact__input"} name="txtemail" id="txtemail" value={this.state.txtemail} onChange={this.handleChange}/>
+                        <textarea  placeholder={this.state.errors.txtmessage?this.state.errors.txtmessage:""} cols="0" rows="10" className={this.state.errors.txtmessage?"error":"contact__input"} name="txtmessage" id="txtmessage" value={this.state.txtmessage} onChange={this.handleChange}></textarea>
                         <input type="button" value="Send" className="contact__button button" onClick={this.sendMail}/>
                     </form>
                 </div>
